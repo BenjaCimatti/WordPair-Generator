@@ -33,11 +33,11 @@ class _RandomWordState extends State<RandomWord> {
     return ListTile(
       title: Text(
         pair.asPascalCase,
-        style: TextStyle(fontSize: 18.0)
+        style: Theme.of(context).textTheme.headline2,
       ),
       trailing: Icon(
         alreadySaved ? Icons.favorite : Icons.favorite_border_rounded,
-        color: alreadySaved ? Colors.red[400] : null,
+        color: alreadySaved ? Colors.redAccent : null,
       ),
       onTap: () {
         setState(() {
@@ -59,8 +59,7 @@ class _RandomWordState extends State<RandomWord> {
             return ListTile(
               title: Text(
                 pair.asPascalCase,
-                style: TextStyle(
-                  fontSize: 18.0),
+                style: Theme.of(context).textTheme.headline2,
               ),
             );
           });
@@ -86,7 +85,10 @@ class _RandomWordState extends State<RandomWord> {
     return Scaffold(
       backgroundColor: Colors.deepPurpleAccent,
       appBar: AppBar(
-        title: Text('WordPair Generator'),
+        title: Text(
+          'WordPair Generator',
+          style: Theme.of(context).textTheme.headline1,
+        ),
         actions: <Widget>[
           IconButton(icon: Icon(Icons.label_important_sharp), onPressed: _pushSaved)
         ],

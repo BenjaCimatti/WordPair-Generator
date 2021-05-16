@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'random_words.dart';
-
 void main() => runApp(MyApp());
 
 class MyApp extends StatelessWidget {
@@ -8,15 +7,24 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      theme: ThemeData(
-        brightness: Brightness.light,
-        primaryColor: Colors.indigo,
-        /* light theme settings */
-      ),
       darkTheme: ThemeData(
         brightness: Brightness.dark,
         primaryColor: Colors.deepPurple[900],
-        /* dark theme settings */
+        fontFamily: 'Poppins',
+        textTheme: TextTheme(
+          headline1: const TextStyle(
+            fontSize: 25.0,
+            fontWeight: FontWeight.w300,
+            color: Colors.white,
+            fontFamily: 'Poppins'
+          ),
+          headline2: const TextStyle(
+            fontSize: 21.0,
+            fontWeight: FontWeight.w200,
+            color: Colors.white,
+            fontFamily: 'Poppins'
+          ),
+        ),
       ),
       themeMode: ThemeMode.dark, 
       home: RandomWord()
