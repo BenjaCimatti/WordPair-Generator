@@ -36,16 +36,58 @@ class _RandomWordState extends State<RandomWord> {
       ),
       trailing: Icon(
         alreadySaved ? Icons.favorite : Icons.favorite_border_rounded,
-        color: alreadySaved ? Colors.red[600] : null,
+        color: alreadySaved ? Colors.red[400] : null,
       ),
+      onTap: () {
+        setState(() {
+        if(alreadySaved) {
+          _savedWordPairs.remove(pair);
+        } else {
+          _savedWordPairs.add(pair);
+        }          
+        });
+      },
     );
   }
   
+  void _pushSaved() {
+    Navigator.of(context).push(
+      MaterialPageRoute(
+        builder: (BuildContext context) {
+          final Iterable<ListTile> tiles = _savedWordPairs.map((WordPair pair) {
+            return ListTile(
+              title: Text(
+                pair.asPascalCase,
+                style: TextStyle(
+                  fontSize: 18.0),
+              ),
+            );
+          });
+
+          final List<Widget> divided = ListTile.divideTiles(
+            context: context,
+            tiles: tiles
+          ).toList();
+          
+          return Scaffold(
+            appBar: AppBar(title: Text('Saved WordPairs'),),
+            body: ListView(
+              children: divided
+            )
+          );
+        }
+      )
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('WordPair Generator')
+        title: Text('WordPair Generator'),
+        actions: <Widget>[
+          IconButton(icon: Icon(Icons.label_important_sharp), onPressed: _pushSaved)
+        ],
       ),
       body: _buildList(),
     );
