@@ -12,6 +12,7 @@ class _RandomWordState extends State<RandomWord> {
   
   Widget _buildList() {
     return ListView.builder(
+      padding: const EdgeInsets.all(16.0),
       itemBuilder: (context, item){
         if(item.isOdd) return Divider();
 
@@ -83,6 +84,7 @@ class _RandomWordState extends State<RandomWord> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Colors.deepPurpleAccent,
       appBar: AppBar(
         title: Text('WordPair Generator'),
         actions: <Widget>[
