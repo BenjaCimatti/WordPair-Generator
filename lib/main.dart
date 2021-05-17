@@ -20,7 +20,7 @@ class MyApp extends StatelessWidget {
           ),
           headline2: const TextStyle(
             fontSize: 21.0,
-            fontWeight: FontWeight.w200,
+            fontWeight: FontWeight.w100,
             color: Colors.white,
             fontFamily: 'Poppins'
           ),
